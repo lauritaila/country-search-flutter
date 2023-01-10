@@ -37,11 +37,6 @@ class CountrySearchDelegate extends SearchDelegate<Country?> {
       return FutureBuilder(
         future: countryService.getCountryByName(query),
         builder: (_, AsyncSnapshot snapshot) {
-          if (snapshot.hasError) {
-            return const ListTile(
-                title: Text('no hay ningun pais con ese termino'));
-          }
-
           if (snapshot.hasData) {
             return _showCountries(snapshot.data);
           } else {
